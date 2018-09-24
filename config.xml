@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<domain xmlns="http://xmlns.oracle.com/weblogic/domain" xmlns:sec="http://xmlns.oracle.com/weblogic/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wls="http://xmlns.oracle.com/weblogic/security/wls" xsi:schemaLocation="http://xmlns.oracle.com/weblogic/security/wls http://xmlns.oracle.com/weblogic/security/wls/1.0/wls.xsd http://xmlns.oracle.com/weblogic/domain http://xmlns.oracle.com/weblogic/1.0/domain.xsd http://xmlns.oracle.com/weblogic/security/xacml http://xmlns.oracle.com/weblogic/security/xacml/1.0/xacml.xsd http://xmlns.oracle.com/weblogic/security/providers/passwordvalidator http://xmlns.oracle.com/weblogic/security/providers/passwordvalidator/1.0/passwordvalidator.xsd http://xmlns.oracle.com/weblogic/security http://xmlns.oracle.com/weblogic/1.0/security.xsd">
+  <name>DEMOAPP</name>
+  <configuration-property>
+    <name>__wls_editable_session_name</name>
+    <value>ServiceBus</value>
+  </configuration-property>
+  <domain-version>12.2.1.3.0</domain-version>
+  <security-configuration>
+    <name>DEMOAPP</name>
+    <secure-mode>
+      <secure-mode-enabled>false</secure-mode-enabled>
+      <restrictive-jmx-policies>true</restrictive-jmx-policies>
+      <warn-on-insecure-ssl>true</warn-on-insecure-ssl>
+      <warn-on-insecure-file-system>true</warn-on-insecure-file-system>
+      <warn-on-auditing>true</warn-on-auditing>
+      <warn-on-insecure-applications>true</warn-on-insecure-applications>
+      <warn-on-java-security-manager>true</warn-on-java-security-manager>
+    </secure-mode>
+  </security-configuration>
+  <app-deployment>
+    <name>Adapter</name>
+    <target>server1</target>
+    <module-type>rar</module-type>
+    <source-path>/u01/app/oracle/product/Adapter.rar</source-path>
+    <deployment-order>300</deployment-order>
+    <plan-dir xsi:nil="true"></plan-dir>
+    <plan-path>/u01/app/oracle/product/Plan.xml</plan-path>
+    <security-dd-model>DDOnly</security-dd-model>
+    <staging-mode>nostage</staging-mode>
+  </app-deployment>
+</domain>
