@@ -15,7 +15,7 @@ with fileinput.FileInput('config.xml', inplace=True) as file:
         if old_plan and new_plan not in line:
             # Not find string - add new string
             print(
-                line.replace('<name>DbAdapter</name>', '<name>DbAdapter</name>\n<plan-path>', new_plan, '</plan-path>'),
+                line.replace('<name>Adapter</name>', '<name>Adapter</name>\n<plan-path>', new_plan, '</plan-path>'),
                 end='')
 
         else:
