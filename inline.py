@@ -1,18 +1,20 @@
-#!/usr/bin/env python3
 import fileinput
+import sys
 
-old_plan = '/u01/app/oracle/product/Adapter.rar'
-new_plan = '/u01/app/oracle/product/New_Adapter.rar'
+old_plan = '/u01/app/oracle/product/Plan.xml'
+new_plan = '/u01/app/oracle/product/New_plan.xml'
 
 old_tag = '<name>Adapter</name>'
-new_tag = '<name>Adapter</name> <plan-path>' + new_plan + '</plan-path>'
+new_tag = '<name>Adapter</name> \n <plan-path>/u01/111</plan-path>'
 
-with fileinput.FileInput('config.xml', inplace=True) as file:
-    for line in file:
-	#Есль есть строка в файле то ее меняем.
-        if old_plan in file:
-            print(line.replace('/u01/app/oracle/product/Adapter.rar', '/u01/app/oracle/product/New_Adapter.rar'), end='')
+fileToSearch = 'config.xml'
+
+for line in fileinput.input(fileToSearch, inplace=True):
+        if old_plan in line:
+            sys.stdout.write(line.replace(old_plan, new_plan))
+            fileinput.close()
+        elif new_plan in line:
+            fileinput.close()
         else:
-	#Если строки нету то добавляем ее - доавив новую сроку к старому тегу.
-	#Новый тег получаем в переменной new_tag
-            print(line.replace,(old_tag, new_tag), end='')
+            sys.stdout.write(line.replace(old_tag, new_tag))
+            fileinput.close()
